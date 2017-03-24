@@ -1,13 +1,8 @@
 import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react';
-//import { observable } from 'mobx';
 
-//@observer
 @inject("appState") @observer
 class RecipeList extends Component {
-
-    // gets recipes from props
-
 
     render() {
         return (

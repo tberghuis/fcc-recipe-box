@@ -7,7 +7,9 @@ export default {
         return new Promise((resolve, reject) => {
 
             //localstorage
-            let r = localStorage.getItem('recipes');
+            let r = JSON.parse(localStorage.getItem("recipes"));
+            
+            console.log("r",r);
             if (r) {
                 resolve(r);
                 // i believe this function will exit
@@ -26,6 +28,10 @@ export default {
             axios.get('/data/initial.json').then((response) => {
                 console.log("response",response);
                 //resolve(response);
+
+                // need to save
+                localStorage.setItem("recipes", JSON.stringify(response.data.recipes));
+
                 resolve(response.data.recipes);
             });
         });
