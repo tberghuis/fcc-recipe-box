@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-//import { observer } from 'mobx-react';
+import { observer, inject } from 'mobx-react';
 //import { observable } from 'mobx';
 
 //@observer
+@inject("appState") @observer
 class RecipeList extends Component {
 
     // gets recipes from props
@@ -11,7 +12,8 @@ class RecipeList extends Component {
     render() {
         return (
             <div>
-                { this.props.recipes.map((recipe)=>{
+                { /* TODO add key prop... */}
+                { this.props.appState.recipes.map((recipe)=>{
                     return <div>{recipe.title}</div>;
                 }) }
             </div>

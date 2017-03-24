@@ -16,28 +16,14 @@ class App extends Component {
         super(props);
 
 
-        //this.props.appState = getI
+        // read article on promises
         Service.getInitialRecipes().then((recipes)=>{
-            this.props.appState.recipes = recipes;
+            //this.props.appState.recipes = recipes;
+            console.log(recipes);
+            this.props.appState.recipes.replace(recipes);
         });
 
-        // load recipes
 
-        // local storage
-        let r = localStorage.getItem('recipes');
-        console.log(r);
-
-        if (!r) {
-            /*
-            axios.get('/user?ID=12345')
-                .then(function (response) {
-                    console.log(response);
-                })
-                .catch(function (error) {
-                    console.log(error);
-                });
-*/
-        }
 
         // if null load initial.json
 
