@@ -1,1 +1,33 @@
 
+@import "~bulma/bulma";
+
+#app {
+    margin-bottom: 40px;
+}
+
+.root > * {
+    text-align: center;
+    // margin: 0 auto;
+}
+
+// a {
+//     // text-decoration: none !important;
+//     // i probably want to use a reset or normalize
+//     // research this later
+//     text-decoration: none;
+// }
+
+.recipe {
+    margin: 10px auto;
+    display: flex;
+    flex-direction: column; // align-content: flex-end;
+    // align-items: center;
+    .title {
+        margin-top: auto;
+        color: white; // text-decoration: none !important;
+        background-color: rgba(0, 0, 0, .5);
+        // width: 100%;
+        text-align: center;
+        line-height: 1.6;
+    }
+}

@@ -19,7 +19,8 @@ class App extends Component {
 
     render() {
         return (
-            <div>
+            <div class="root">
+                <h1 class="title">FCC Recipe Box</h1>
                 {this.props.children}
             </div>
         );

@@ -1,23 +1,26 @@
 {
     "recipes": [{
+            "id": "876f538f-cb05-4840-8168-e5bcb28fd7d9",
             "title": "Thai Basil Chicken",
             "ingredients": [
                 "chicken",
                 "basil",
                 "rice"
             ],
-            "image": "http://fcc.tomberghuis.com/react/recipe-box/images/thai-chicken-basil.jpg"
+            "image": "/images/thai-chicken-basil.jpg"
         },
         {
+            "id": "bb0e7e32-9034-478d-ac76-cca7a097494b",
             "title": "Tom Yum Soup",
             "ingredients": [
                 "lemongrass",
                 "chilli paste",
                 "fish sauce"
             ],
-            "image": "http://fcc.tomberghuis.com/react/recipe-box/images/thai-tom-yum-soup.jpg"
+            "image": "/images/thai-tom-yum-soup.jpg"
         },
         {
+            "id": "fd4b429a-2ee6-4963-be54-50a88b6d8887",
             "title": "Thai Green Curry",
             "ingredients": [
                 "chicken",
@@ -25,7 +28,7 @@
                 "basil",
                 "green curry paste"
             ],
-            "image": "http://fcc.tomberghuis.com/react/recipe-box/images/thai-green-curry.jpg"
+            "image": "/images/thai-green-curry.jpg"
         }
     ]
 }

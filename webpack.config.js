@@ -10,7 +10,9 @@ module.exports = {
         path: path.resolve(__dirname, 'build'),
         filename: '[name].js'
     },
-
+    devServer: {
+        historyApiFallback: true,
+    },
     module: {
         loaders: [{
             test: /\.jsx?$/,
