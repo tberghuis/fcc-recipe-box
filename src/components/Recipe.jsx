@@ -20,12 +20,12 @@ class Recipe extends Component {
 
         return (
             <div class="recipe-details">
-                <div>Recipe Details</div>
-                <div>{recipe.title}</div>
+                <div>Recipe Details</div><br/>
+                <div class="title">{recipe.title}</div>
                 <div class="c1">
                     <div><img src={recipe.image} /></div>
                     <div>
-                        <div>ingredients</div>
+                        <div class="title">Ingredients</div>
                         <div>{recipe.ingredients.map((ingredient) => {
                             return <div>{ingredient}</div>;
                         })}</div>
