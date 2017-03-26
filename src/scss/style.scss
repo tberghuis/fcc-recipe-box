@@ -1,14 +1,7 @@
 
 @import "~bulma/bulma";
 
-#app {
-    margin-bottom: 40px;
-}
-
-.root > * {
-    text-align: center;
-    // margin: 0 auto;
-}
+@import "app";
 
 // a {
 //     // text-decoration: none !important;

@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react';
-//import { observer } from 'mobx-react';
-//import { Link } from 'react-router';
+import { Link } from 'react-router';
 
 @inject("appState") @observer
 class Recipe extends Component {
 
     render() {
 
+        // must be a more effective way than this
         let r = this.props.appState.recipes.filter((recipe) => {
             return (this.props.params.id === recipe.id);
         });
@@ -26,11 +26,12 @@ class Recipe extends Component {
                     <div><img src={recipe.image} /></div>
                     <div>
                         <div class="title">Ingredients</div>
-                        <div>{recipe.ingredients.map((ingredient) => {
-                            return <div>{ingredient}</div>;
+                        <div>{recipe.ingredients.map((ingredient,i) => {
+                            return <div key={i}>{ingredient}</div>;
                         })}</div>
                     </div>
                 </div>
+                <Link to={"/recipe/"+recipe.id+"/edit"} class="button">Edit</Link>
             </div>
         );
     }
