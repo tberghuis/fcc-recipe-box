@@ -1,0 +1,24 @@
+
+
+.recipe-summary {
+    margin: 10px auto;
+    // display: flex;
+    // flex-direction: column; 
+    // justify-content: flex-end;
+
+    position: relative;
+    .title {
+        color: white; // text-decoration: none !important;
+        background-color: rgba(0, 0, 0, .5);
+        width: 100%;
+        text-align: center;
+        line-height: 1.6;
+        position: absolute;
+        bottom: 0;
+    }
+    a {
+        height: 100%;
+        display: block;
+    }
+}
+

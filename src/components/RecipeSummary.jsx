@@ -11,16 +11,18 @@ class RecipeSummary extends Component {
             backgroundImage: 'url(' + this.props.recipe.image + ')',
             backgroundSize: 'cover',
             backgroundPosition: 'center center',
-            width: 300,
+            width: 400,
             height: 300
         };
 
         return (
-            <Link to={"/recipe/" + this.props.recipe.id}>
-                <div style={recipeStyle} class="recipe">
+
+            <div style={recipeStyle} class="recipe-summary">
+                <Link to={"/recipe/" + this.props.recipe.id}>
                     <h2 class="title">{this.props.recipe.title}</h2>
-                </div>
-            </Link>
+                </Link>
+            </div>
+
         );
     }
 
