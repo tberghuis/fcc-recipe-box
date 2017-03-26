@@ -7,17 +7,10 @@ class Recipe extends Component {
 
     render() {
 
-        // must be a more effective way than this
-        // there is a find method
-        let r = this.props.appState.recipes.filter((recipe) => {
-            return (this.props.params.id === recipe.id);
-        });
-
-
-        if (r.length < 1) {
-            return <div>invalid id</div>
+        let recipe = this.props.appState.getRecipe(this.props.params.id);
+        if (!recipe) {
+             return <div>invalid id</div>
         }
-        let recipe = r[0];
 
         return (
             <div class="recipe-details">

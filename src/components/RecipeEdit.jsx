@@ -6,11 +6,17 @@ import { observer, inject } from 'mobx-react';
 class RecipeEdit extends Component {
 
     render() {
-        console.log('params id');
+        // console.log(this.props.params.id);
+
+        let recipe = this.props.appState.getRecipe(this.props.params.id);
+
+        if(!recipe){
+            return <div>Loading...</div>;
+        }
 
         return (
             <div class="recipe-edit">
-                hello world
+                {recipe.title}
             </div>
         );
     }
