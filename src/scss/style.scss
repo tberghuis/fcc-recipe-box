@@ -17,6 +17,7 @@
 //     text-decoration: none;
 // }
 
+// need to rename and move to own file
 .recipe {
     margin: 10px auto;
     display: flex;
@@ -30,3 +31,6 @@
         line-height: 1.6;
     }
 }
+
+@import 'recipe';
+
