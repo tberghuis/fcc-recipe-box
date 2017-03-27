@@ -15,7 +15,7 @@ class RecipeList extends Component {
 
     render() {
         return (
-            <div>
+            <div class="recipe-list">
                 <button onClick={this.addRecipe} class="button">Add Recipe</button>
                 <h2 class="title">All Recipes</h2>
                 { /* TODO add key prop... */}
