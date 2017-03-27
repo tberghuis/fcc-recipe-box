@@ -1,16 +1,29 @@
 import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react';
 // import { Link } from 'react-router';
+import { observable } from 'mobx';
 
-@inject("appState") @observer
+import Service from '../Services.js';
+
+//@inject("appState") @observer
+@observer
 class RecipeEdit extends Component {
 
+    @observable recipe = null;
+
+    constructor(props) {
+        super(props);
+        Service.getRecipe(this.props.params.id).then((recipe) => {
+            this.recipe = JSON.parse(JSON.stringify(recipe));
+        });
+    }
+
+    handleTitleChange = (event) => {
+        this.recipe.title = event.target.value;
+    }
+
     render() {
-        // console.log(this.props.params.id);
-
-        let recipe = this.props.appState.getRecipe(this.props.params.id);
-
-        if(!recipe){
+        if (!this.recipe) {
             return <div>Loading...</div>;
         }
 
@@ -24,22 +37,27 @@ class RecipeEdit extends Component {
                     </div>
                     <div class="c3">
                         <div class="c1">Title: </div>
-                        <input class="input" type="text"/>
+                        <input
+                            onChange={this.handleTitleChange}
+                            value={this.recipe.title} class="input" type="text" />
                     </div>
-                    <div class="c3">
+                    <div key="0" class="c3">
                         <div class="c1">Ingredients: </div>
-                        <input class="input" type="text"/>
+                        <input
+                            value={this.recipe.ingredients[0]}
+                            class="input" type="text" />
                     </div>
-                    <div class="c3">
-                        <div class="c1"></div>
-                        <input class="input" type="text"/>
-                    </div>
-                    <div class="c3">
-                        <div class="c1"></div>
-                        <input class="input" type="text"/>
-                    </div>
+                    {this.recipe.ingredients.slice(1).map((ingredient,i) => {
+                        return (
+                            <div key={i+1} class="c3">
+                                <div class="c1"></div>
+                                <input
+                                    value={ingredient}
+                                    class="input" type="text" />
+                            </div>
+                        );
+                    })}
                 </div>
-                {recipe.title}
             </div>
         );
     }

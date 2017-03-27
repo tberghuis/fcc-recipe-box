@@ -2,12 +2,26 @@ import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react';
 
 import RecipeSummary from './RecipeSummary.jsx';
+import Service from '../Services.js';
 
 @inject("appState") @observer
 class RecipeList extends Component {
     static contextTypes = {
         router: React.PropTypes.object
     };
+
+    constructor(props) {
+        super(props);
+
+        // Should remove getInitialRecipes and add that to RecipeSummary
+
+
+        Service.getInitialRecipes().then((recipes) => {
+            //this.props.appState.recipes = recipes;
+            console.log(recipes);
+            this.props.appState.recipes.replace(recipes);
+        });
+    }
 
     addRecipe = () => {
         console.log("add recipe");
@@ -22,7 +36,7 @@ class RecipeList extends Component {
                 {this.props.appState.recipes.map((recipe) => {
                     //return <div>{recipe.title}</div>;
 
-                    return <RecipeSummary 
+                    return <RecipeSummary
                         key={recipe.id}
                         recipe={recipe}></RecipeSummary>;
                 })}
