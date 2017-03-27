@@ -15,16 +15,13 @@ class Recipe extends Component {
 
         console.log(this.props.params.id);
         Service.getRecipe(this.props.params.id).then((recipe) => {
+            // since component read only
             this.recipe = recipe;
-            //this.recipe = JSON.parse(JSON.stringify(recipe));
-            // this.render();
         });
     }
 
 
     render() {
-
-        // let recipe = this.props.appState.getRecipe(this.props.params.id);
         if (!this.recipe) {
             return <div>Loading</div>
         }

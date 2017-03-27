@@ -1,14 +1,8 @@
-
-
 .recipe-summary {
     margin: 10px auto;
-    // display: flex;
-    // flex-direction: column; 
-    // justify-content: flex-end;
-
     position: relative;
     .title {
-        color: white; // text-decoration: none !important;
+        color: white;
         background-color: rgba(0, 0, 0, .5);
         width: 100%;
         text-align: center;
@@ -21,4 +15,3 @@
         display: block;
     }
 }
-

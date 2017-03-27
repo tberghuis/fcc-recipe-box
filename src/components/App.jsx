@@ -3,12 +3,9 @@ import { observer, inject } from 'mobx-react';
 
 import RecipeList from './RecipeList.jsx';
 
-
 //@inject("appState") @observer
 @observer
 class App extends Component {
-
-    
 
     render() {
         return (

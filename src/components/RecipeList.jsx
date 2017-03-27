@@ -12,13 +12,11 @@ class RecipeList extends Component {
 
     constructor(props) {
         super(props);
-
-        // Should remove getInitialRecipes and add that to RecipeSummary
-
-
         Service.getInitialRecipes().then((recipes) => {
             //this.props.appState.recipes = recipes;
             console.log(recipes);
+            // hey i don't even need global state.
+            // leave as for now
             this.props.appState.recipes.replace(recipes);
         });
     }
@@ -32,10 +30,7 @@ class RecipeList extends Component {
             <div class="recipe-list">
                 <button onClick={this.addRecipe} class="button">Add Recipe</button>
                 <h2 class="title">All Recipes</h2>
-                { /* TODO add key prop... */}
                 {this.props.appState.recipes.map((recipe) => {
-                    //return <div>{recipe.title}</div>;
-
                     return <RecipeSummary
                         key={recipe.id}
                         recipe={recipe}></RecipeSummary>;

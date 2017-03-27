@@ -13,7 +13,14 @@ class RecipeEdit extends Component {
 
     constructor(props) {
         super(props);
+
+        // instead of this i could have checked appstate
+        // then done this
+        // this works so leave it as this way until i come across
+        // a better pattern. maybe redux?
+        // get this done and move on
         Service.getRecipe(this.props.params.id).then((recipe) => {
+            // dont make local changes persist
             this.recipe = JSON.parse(JSON.stringify(recipe));
         });
     }

@@ -1,16 +1,12 @@
-
 .recipe-details {
     .c1 {
         display: flex;
         width: 600px;
-        // border: 1px solid red;
         margin: 0 auto;
-        
-        > div {
+        >div {
             flex: 1 1 0;
             text-align: left;
             margin: 10px;
         }
     }
 }
-
