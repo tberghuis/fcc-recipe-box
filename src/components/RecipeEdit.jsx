@@ -5,8 +5,7 @@ import { observable } from 'mobx';
 
 import Service from '../Services.js';
 
-//@inject("appState") @observer
-@observer
+@inject("appState") @observer
 class RecipeEdit extends Component {
 
     @observable recipe = null;
@@ -20,6 +19,7 @@ class RecipeEdit extends Component {
         // a better pattern. maybe redux?
         // get this done and move on
         Service.getRecipe(this.props.params.id).then((recipe) => {
+            //this.props.appState.recipes.replace(recipes);
             // dont make local changes persist
             this.recipe = JSON.parse(JSON.stringify(recipe));
         });
@@ -27,6 +27,18 @@ class RecipeEdit extends Component {
 
     handleTitleChange = (event) => {
         this.recipe.title = event.target.value;
+    }
+
+    handleSave = () => {
+
+
+
+
+        // validation
+        // or button should be disabled if invalid
+
+        //mobx replace array
+        this.props.appState.saveRecipe(this.recipe);
     }
 
     render() {
@@ -54,9 +66,9 @@ class RecipeEdit extends Component {
                             value={this.recipe.ingredients[0]}
                             class="input" type="text" />
                     </div>
-                    {this.recipe.ingredients.slice(1).map((ingredient,i) => {
+                    {this.recipe.ingredients.slice(1).map((ingredient, i) => {
                         return (
-                            <div key={i+1} class="c3">
+                            <div key={i + 1} class="c3">
                                 <div class="c1"></div>
                                 <input
                                     value={ingredient}
@@ -64,6 +76,13 @@ class RecipeEdit extends Component {
                             </div>
                         );
                     })}
+                    <div class="c3">
+                        <div class="c1"></div>
+                        <button
+                            class="button"
+                            onClick={this.handleSave}
+                        >Save</button>
+                    </div>
                 </div>
             </div>
         );
