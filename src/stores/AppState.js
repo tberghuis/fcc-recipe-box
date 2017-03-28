@@ -40,6 +40,17 @@ class AppState {
 
   }
 
+
+
+  deleteRecipe = (id) => {
+    let i = this.getRecipeIndex(id);
+
+    // do i have to assign
+    // this.recipes = this.recipes.splice(i,1);
+    this.recipes.splice(i,1);
+    localStorage.setItem("recipes", JSON.stringify(this.recipes));
+  }
+
   getRecipeIndex = (id) => {
 
     console.log("id", id);

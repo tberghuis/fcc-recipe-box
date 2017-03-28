@@ -7,6 +7,9 @@ import Service from '../Services.js';
 
 @inject("appState") @observer
 class RecipeEdit extends Component {
+    static contextTypes = {
+        router: React.PropTypes.object
+    };
 
     @observable recipe = null;
 
@@ -44,12 +47,15 @@ class RecipeEdit extends Component {
         this.recipe.ingredients.push("");
     }
 
+    deleteRecipe = () => {
+        this.props.appState.deleteRecipe(this.recipe.id);
+        this.context.router.push("/");
+    }
+    viewRecipe = () => {
+        this.context.router.push("/recipe/" + this.recipe.id);
+    }
 
     handleSave = () => {
-
-
-
-
         // validation
         // or button should be disabled if invalid
 
@@ -123,8 +129,11 @@ class RecipeEdit extends Component {
                             class="button"
                             onClick={this.handleSave}
                         >Save</button>
-                        <button class="button">Delete</button>
                         <button
+                            onClick={this.deleteRecipe}
+                            class="button">Delete</button>
+                        <button
+                            onClick={this.viewRecipe}
                             class="button"
                         >View Recipe</button>
                     </div>
