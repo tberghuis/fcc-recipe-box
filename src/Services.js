@@ -37,5 +37,13 @@ export default {
                 resolve(r[0]);
             });
         });
+    },
+    resetRecipes() {
+        return new Promise((resolve, reject) => {
+            axios.get('/data/initial.json').then((response) => {
+                localStorage.setItem("recipes", JSON.stringify(response.data.recipes));
+                resolve(response.data.recipes);
+            });
+        });
     }
 };

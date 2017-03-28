@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react';
+import { Link } from 'react-router';
 
 import RecipeList from './RecipeList.jsx';
 import Service from '../Services.js';
@@ -21,7 +22,7 @@ class App extends Component {
     render() {
         return (
             <div class="app">
-                <h1 class="title">FCC Recipe Box</h1>
+                <h1 class="title"><Link to="/">FCC Recipe Box</Link></h1>
                 {this.props.children}
             </div>
         );

@@ -16,9 +16,17 @@ class RecipeList extends Component {
         console.log("add recipe");
     }
 
+    resetRecipes = () => {
+        Service.resetRecipes().then((recipes)=>{
+            this.props.appState.recipes.replace(recipes);
+        });
+    }
+
+
     render() {
         return (
             <div class="recipe-list">
+                <button onClick={this.resetRecipes} class="button">Reset Recipes</button>
                 <button onClick={this.addRecipe} class="button">Add Recipe</button>
                 <h2 class="title">All Recipes</h2>
                 {this.props.appState.recipes.map((recipe) => {
