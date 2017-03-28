@@ -29,6 +29,18 @@ class RecipeEdit extends Component {
         this.recipe.title = event.target.value;
     }
 
+
+    handleIngredientChange = (event, index) => {
+        //this.recipe.title = event.target.value;
+        this.recipe.ingredients[index] = event.target.value;
+    }
+
+    addIngredient = () => {
+        //this.recipe.title = event.target.value;
+        this.recipe.ingredients.push("");
+    }
+
+
     handleSave = () => {
 
 
@@ -41,6 +53,11 @@ class RecipeEdit extends Component {
         this.props.appState.saveRecipe(this.recipe);
     }
 
+    //array.splice(index, 1);
+    handleRemoveIngredient = (index) => {
+        this.recipe.ingredients.splice(index, 1);
+    }
+
     render() {
         if (!this.recipe) {
             return <div>Loading...</div>;
@@ -51,10 +68,6 @@ class RecipeEdit extends Component {
                 <div class="title">Recipe Edit</div>
                 <div class="c2">
                     <div class="c3">
-                        <div class="c1"></div>
-                        <button class="button">Delete</button>
-                    </div>
-                    <div class="c3">
                         <div class="c1">Title: </div>
                         <input
                             onChange={this.handleTitleChange}
@@ -64,6 +77,9 @@ class RecipeEdit extends Component {
                         <div class="c1">Ingredients: </div>
                         <input
                             value={this.recipe.ingredients[0]}
+                            onChange={(event) => {
+                                this.handleIngredientChange(event, 0)
+                            }}
                             class="input" type="text" />
                     </div>
                     {this.recipe.ingredients.slice(1).map((ingredient, i) => {
@@ -71,8 +87,16 @@ class RecipeEdit extends Component {
                             <div key={i + 1} class="c3">
                                 <div class="c1"></div>
                                 <input
+                                    onChange={(event) => {
+                                        this.handleIngredientChange(event, i + 1)
+                                    }}
                                     value={ingredient}
                                     class="input" type="text" />
+                                <button
+                                    onClick={() => {
+                                        this.handleRemoveIngredient(i + 1)
+                                    }}
+                                    class="button">X</button>
                             </div>
                         );
                     })}
@@ -80,8 +104,19 @@ class RecipeEdit extends Component {
                         <div class="c1"></div>
                         <button
                             class="button"
+                            onClick={this.addIngredient}
+                        >Add Ingredient</button>
+                    </div>
+                    <div class="c3">
+                        <div class="c1"></div>
+                        <button
+                            class="button"
                             onClick={this.handleSave}
                         >Save</button>
+                        <button class="button">Delete</button>
+                        <button
+                            class="button"
+                        >View Recipe</button>
                     </div>
                 </div>
             </div>

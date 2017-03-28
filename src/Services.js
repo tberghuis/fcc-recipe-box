@@ -11,8 +11,10 @@ export default {
                 resolve(r);
                 // i believe this function will exit
                 // debug to confirm???
+                // it didn't so i obviously don't understand promises fully.
+                return;
             }
-            console.log("here");
+            // console.log("here");
 
             axios.get('/data/initial.json').then((response) => {
                 //console.log("response",response);
