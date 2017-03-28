@@ -29,6 +29,10 @@ class RecipeEdit extends Component {
         this.recipe.title = event.target.value;
     }
 
+    handleImageChange = (event) => {
+        this.recipe.image = event.target.value;
+    }
+
 
     handleIngredientChange = (event, index) => {
         //this.recipe.title = event.target.value;
@@ -106,6 +110,12 @@ class RecipeEdit extends Component {
                             class="button"
                             onClick={this.addIngredient}
                         >Add Ingredient</button>
+                    </div>
+                    <div class="c3">
+                        <div class="c1">Image URL: </div>
+                        <input
+                            onChange={this.handleImageChange}
+                            value={this.recipe.image} class="input" type="text" />
                     </div>
                     <div class="c3">
                         <div class="c1"></div>
