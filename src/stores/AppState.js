@@ -40,14 +40,29 @@ class AppState {
 
   }
 
+  cleanRecipeList = () => {
+    //this.recipes.push(recipe);
 
+
+    this.recipes.replace(this.recipes.filter((r) => {
+      console.log(r);
+      return r.title.trim() !== "";
+    }));
+
+    localStorage.setItem("recipes", JSON.stringify(this.recipes));
+  }
+
+  addRecipe = (recipe) => {
+    this.recipes.push(recipe);
+    localStorage.setItem("recipes", JSON.stringify(this.recipes));
+  }
 
   deleteRecipe = (id) => {
     let i = this.getRecipeIndex(id);
 
     // do i have to assign
     // this.recipes = this.recipes.splice(i,1);
-    this.recipes.splice(i,1);
+    this.recipes.splice(i, 1);
     localStorage.setItem("recipes", JSON.stringify(this.recipes));
   }
 

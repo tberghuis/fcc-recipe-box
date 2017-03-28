@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react';
+const uuid = require('uuid/v4');
 
 import RecipeSummary from './RecipeSummary.jsx';
 import Service from '../Services.js';
@@ -10,14 +11,30 @@ class RecipeList extends Component {
         router: React.PropTypes.object
     };
 
+    constructor(props) {
+        super(props);
+        // delete recipe with empty titles?
+        // i know this is bad sln
+        // really need to redesign
 
+        // console.log("recipe list constructor");
+        this.props.appState.cleanRecipeList();
+    }
 
     addRecipe = () => {
-        console.log("add recipe");
+        //console.log("add recipe");
+        let recipe = {};
+        recipe.id = uuid();
+        recipe.title = "";
+        recipe.ingredients = [""];
+        recipe.image = "";
+        this.props.appState.addRecipe(recipe);
+        this.context.router.push('/recipe/' + recipe.id + '/edit');
+        //router push edit
     }
 
     resetRecipes = () => {
-        Service.resetRecipes().then((recipes)=>{
+        Service.resetRecipes().then((recipes) => {
             this.props.appState.recipes.replace(recipes);
         });
     }
