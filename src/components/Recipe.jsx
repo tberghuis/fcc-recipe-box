@@ -5,7 +5,6 @@ import { observable } from 'mobx';
 
 import Service from '../Services.js';
 
-//@inject("appState") @observer
 @observer
 class Recipe extends Component {
     @observable recipe;

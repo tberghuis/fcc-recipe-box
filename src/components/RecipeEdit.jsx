@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react';
-// import { Link } from 'react-router';
 import { observable, runInAction } from 'mobx';
 
 import Service from '../Services.js';
@@ -16,39 +15,9 @@ class RecipeEdit extends Component {
 
     constructor(props) {
         super(props);
-
-        //console.log("recipe edit constructor");
-
-        // instead of this i could have checked appstate
-        // then done this
-        // this works so leave it as this way until i come across
-        // a better pattern. maybe redux?
-        // get this done and move on
-
-        // if(this.props.appState.isLoaded){
-
-        // }
         Service.getRecipe(this.props.params.id).then((recipe) => {
-            //this.props.appState.recipes.replace(recipes);
-            // dont make local changes persist
-
-            console.log(recipe);
-
-            // if (!recipe) {
-
-            //     runInAction("add recipe", () => {
-            //         this.recipe = {};
-            //         this.recipe.id = this.props.params.id;
-            //         this.recipe.title = "";
-            //         this.recipe.ingredients = [""];
-            //         this.recipe.image = "";
-            //         this.props.appState.addRecipe(recipe);
-            //     });
-
-
-
-
             this.recipe = JSON.parse(JSON.stringify(recipe));
+            // hack
             this.saved = (this.recipe.title.trim()!=="");
         });
     }
@@ -61,14 +30,11 @@ class RecipeEdit extends Component {
         this.recipe.image = event.target.value;
     }
 
-
     handleIngredientChange = (event, index) => {
-        //this.recipe.title = event.target.value;
         this.recipe.ingredients[index] = event.target.value;
     }
 
     addIngredient = () => {
-        //this.recipe.title = event.target.value;
         this.recipe.ingredients.push("");
     }
 
@@ -81,32 +47,22 @@ class RecipeEdit extends Component {
     }
 
     handleSave = () => {
-
         if (this.recipe.title.trim() === "") {
             alert("Please at least enter a title");
             return;
         }
-
-        // validation
-        // or button should be disabled if invalid
-
-        //mobx replace array
         this.props.appState.saveRecipe(this.recipe);
         this.saved = true;
     }
 
-    //array.splice(index, 1);
     handleRemoveIngredient = (index) => {
         this.recipe.ingredients.splice(index, 1);
     }
 
     render() {
         if (!this.recipe) {
-            console.log("null.recipe", this.recipe);
             return <div>Loading...</div>;
         }
-
-        console.log("this.recipe", this.recipe);
 
         return (
             <div class="recipe-edit">

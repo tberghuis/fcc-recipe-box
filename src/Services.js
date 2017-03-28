@@ -1,10 +1,8 @@
-// imports
 import axios from 'axios';
 
 export default {
     getInitialRecipes() {
         return new Promise((resolve, reject) => {
-            //localstorage
             let r = JSON.parse(localStorage.getItem("recipes"));
             console.log("r", r);
             if (r) {
@@ -14,14 +12,8 @@ export default {
                 // it didn't so i obviously don't understand promises fully.
                 return;
             }
-            // console.log("here");
-
             axios.get('/data/initial.json').then((response) => {
-                //console.log("response",response);
-
-                // need to save
                 localStorage.setItem("recipes", JSON.stringify(response.data.recipes));
-
                 resolve(response.data.recipes);
             });
         });

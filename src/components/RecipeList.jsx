@@ -15,14 +15,11 @@ class RecipeList extends Component {
         super(props);
         // delete recipe with empty titles?
         // i know this is bad sln
-        // really need to redesign
-
-        // console.log("recipe list constructor");
+        // really need to redesign, maybe learning redux will help me make better design choices
         this.props.appState.cleanRecipeList();
     }
 
     addRecipe = () => {
-        //console.log("add recipe");
         let recipe = {};
         recipe.id = uuid();
         recipe.title = "";
@@ -30,7 +27,6 @@ class RecipeList extends Component {
         recipe.image = "";
         this.props.appState.addRecipe(recipe);
         this.context.router.push('/recipe/' + recipe.id + '/edit');
-        //router push edit
     }
 
     resetRecipes = () => {
@@ -38,7 +34,6 @@ class RecipeList extends Component {
             this.props.appState.recipes.replace(recipes);
         });
     }
-
 
     render() {
         return (

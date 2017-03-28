@@ -11,8 +11,6 @@ class App extends Component {
     constructor(props) {
         super(props);
         Service.getInitialRecipes().then((recipes) => {
-            //this.props.appState.recipes = recipes;
-            console.log(recipes);
             // hey i don't even need global state.
             // leave as for now
             this.props.appState.recipes.replace(recipes);

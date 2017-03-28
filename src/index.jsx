@@ -13,10 +13,6 @@ import style from './scss/style.scss';
 
 const appState = new AppState();
 
-//TODO remove this tmp code
-// const uuid = require('uuid/v4');
-// window.uuid = uuid;
-
 render(
   (
     <Provider appState={appState}>
